@@ -1,0 +1,4 @@
+name: CloudBridge
+version: 2.0.0
+main: de.hydracloud.cloudbridge.CloudBridge
+author: xxFLORII
