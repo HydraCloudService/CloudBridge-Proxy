@@ -16,7 +16,6 @@ import dev.waterdog.waterdogpe.ProxyServer;
 import dev.waterdog.waterdogpe.event.defaults.PlayerDisconnectedEvent;
 import dev.waterdog.waterdogpe.event.defaults.PlayerLoginEvent;
 import dev.waterdog.waterdogpe.event.defaults.ServerTransferRequestEvent;
-import dev.waterdog.waterdogpe.network.protocol.ProtocolVersion;
 import dev.waterdog.waterdogpe.player.ProxiedPlayer;
 import dev.waterdog.waterdogpe.plugin.Plugin;
 
@@ -39,8 +38,6 @@ public class CloudBridge extends Plugin {
     public void onStartup() {
         instance = this;
         GeneralSettings.sync();
-
-        saveResource("config.yml");
 
         try {
             network = new Network(new InetSocketAddress(InetAddress.getByName("127.0.0.1"), GeneralSettings.getNetworkPort()));
@@ -71,11 +68,6 @@ public class CloudBridge extends Plugin {
         network.sendPacket(new DisconnectPacket(DisconnectReason.SERVER_SHUTDOWN));
         network.close();
         threadPool.shutdownNow();
-    }
-
-    public List<Integer> getAcceptedProtocols() {
-        List<Integer> acceptedProtocols = new ArrayList<>(ProtocolVersion.latest().getProtocol());
-        return getConfig().getList("acceptedProtocols", acceptedProtocols);
     }
 
     public Network getNetwork() {

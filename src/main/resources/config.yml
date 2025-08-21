@@ -1,9 +1,0 @@
-# If you leave this list empty and a player joins with protocol version that is NOT supported on the sub servers,
-# he will just abuse the ReconnectHandler and be stuck in the loading screen.
-# If you include the protocol versions supported by your PocketMine-Servers, these versions can join too then.
-# acceptedProtocols:
-#  - 748
-
-# --- LIST OF PROTOCOL VERSIONS: https://minecraft.wiki/w/Protocol_version#Bedrock_Edition
-acceptedProtocols:
-  - 766
