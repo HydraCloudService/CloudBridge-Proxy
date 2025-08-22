@@ -14,6 +14,7 @@ public class TimeoutTask extends Task {
         if (!CloudAPI.getInstance().isVerified()) return;
         if ((CloudBridge.getInstance().lastKeepALiveCheck + 10) <= Utils.time()) {
             MainLogger.getLogger().warning("§cServer timeout! Shutdown...");
+            ProxyServer.getInstance().shutdown();
         }
     }
 
