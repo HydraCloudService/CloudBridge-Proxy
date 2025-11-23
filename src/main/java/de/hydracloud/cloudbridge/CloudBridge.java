@@ -68,7 +68,7 @@ public class CloudBridge extends Plugin {
 
     @Override
     public void onDisable() {
-        for (ProxiedPlayer player : ProxyServer.getInstance().getPlayers().values()) player.disconnect(Language.current().translate("inGame.proxy.stopped"));
+        for (ProxiedPlayer player : ProxyServer.getInstance().getPlayers().values()) player.disconnect((CharSequence) Language.current().translate("inGame.proxy.stopped"));
         network.sendPacket(new DisconnectPacket(DisconnectReason.SERVER_SHUTDOWN));
         network.close();
         threadPool.shutdownNow();

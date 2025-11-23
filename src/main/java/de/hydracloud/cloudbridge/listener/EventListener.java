@@ -26,7 +26,7 @@ public class EventListener {
             RequestManager.getInstance().sendRequest(new CheckPlayerMaintenanceRequestPacket(player.getName())).then(responsePacket -> {
                 CheckPlayerMaintenanceResponsePacket checkPlayerMaintenanceResponsePacket = (CheckPlayerMaintenanceResponsePacket) responsePacket;
                 if (!checkPlayerMaintenanceResponsePacket.isValue()) {
-                    player.disconnect(Language.current().translate("inGame.template.kick.maintenance"));
+                    player.disconnect((CharSequence) Language.current().translate("inGame.template.kick.maintenance"));
                 }
             });
         }

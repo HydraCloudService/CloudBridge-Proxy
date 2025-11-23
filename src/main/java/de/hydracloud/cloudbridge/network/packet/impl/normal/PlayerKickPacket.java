@@ -36,7 +36,7 @@ public class PlayerKickPacket extends CloudPacket {
     @Override
     public void handle() {
         ProxiedPlayer player;
-        if ((player = ProxyServer.getInstance().getPlayer(this.player)) != null) player.disconnect(reason);
+        if ((player = ProxyServer.getInstance().getPlayer(this.player)) != null) player.disconnect((CharSequence) reason);
     }
 
 }
