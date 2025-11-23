@@ -1,5 +1,7 @@
 package de.hydracloud.cloudbridge.language;
 
+import lombok.Getter;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +26,9 @@ public enum Language {
         return fallback();
     }
 
+    @Getter
     private final String name;
+    @Getter
     private final List<String> aliases;
     private Map<String, String> messages = new HashMap<>();
 
@@ -41,13 +45,5 @@ public enum Language {
         String message = messages.getOrDefault(key, key).replace("{PREFIX}", messages.getOrDefault("inGame.prefix", ""));
         for (int i = 0; i < params.length; i++) message = message.replace("%" + i + "%", params[i]);
         return message;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public List<String> getAliases() {
-        return aliases;
     }
 }

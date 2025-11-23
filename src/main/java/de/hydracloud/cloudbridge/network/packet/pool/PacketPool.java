@@ -5,11 +5,14 @@ import de.hydracloud.cloudbridge.network.packet.impl.normal.*;
 import de.hydracloud.cloudbridge.network.packet.impl.request.*;
 import de.hydracloud.cloudbridge.network.packet.impl.response.*;
 import dev.waterdog.waterdogpe.logger.MainLogger;
+import lombok.Getter;
 
 import java.util.HashMap;
 
+@Getter
 public class PacketPool {
 
+    @Getter
     private static PacketPool instance;
 
     private final HashMap<String, Class<? extends CloudPacket>> packets = new HashMap<>();
@@ -56,18 +59,11 @@ public class PacketPool {
         if (packetClass == null) return null;
         CloudPacket packet = null;
         try {
-            packet = packetClass.newInstance();
+            packet = packetClass.getDeclaredConstructor().newInstance();
         } catch (Exception e) {
             MainLogger.getLogger().throwing(e);
         }
         return packet;
     }
 
-    public static PacketPool getInstance() {
-        return instance;
-    }
-
-    public HashMap<String, Class<? extends CloudPacket>> getPackets() {
-        return packets;
-    }
 }

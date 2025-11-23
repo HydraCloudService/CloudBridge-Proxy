@@ -2,12 +2,14 @@ package de.hydracloud.cloudbridge.network.packet;
 
 import de.hydracloud.cloudbridge.network.packet.data.PacketData;
 import de.hydracloud.cloudbridge.util.Utils;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.UUID;
 import java.util.function.Consumer;
 
+@Getter
 @NoArgsConstructor
 public class RequestPacket extends CloudPacket {
 
@@ -44,19 +46,4 @@ public class RequestPacket extends CloudPacket {
 
     final public void handle() {}
 
-    public String getRequestId() {
-        return requestId;
-    }
-
-    public double getSentTime() {
-        return sentTime;
-    }
-
-    public ArrayList<Consumer<ResponsePacket>> getThen() {
-        return then;
-    }
-
-    public Consumer<RequestPacket> getFailure() {
-        return failure;
-    }
 }

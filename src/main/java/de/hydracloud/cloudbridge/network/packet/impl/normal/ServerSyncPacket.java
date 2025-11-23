@@ -5,8 +5,10 @@ import de.hydracloud.cloudbridge.api.registry.Registry;
 import de.hydracloud.cloudbridge.api.server.CloudServer;
 import de.hydracloud.cloudbridge.network.packet.CloudPacket;
 import de.hydracloud.cloudbridge.network.packet.data.PacketData;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Getter
 @NoArgsConstructor
 public class ServerSyncPacket extends CloudPacket {
 
@@ -43,11 +45,4 @@ public class ServerSyncPacket extends CloudPacket {
         }
     }
 
-    public CloudServer getServer() {
-        return server;
-    }
-
-    public boolean isRemoval() {
-        return removal;
-    }
 }

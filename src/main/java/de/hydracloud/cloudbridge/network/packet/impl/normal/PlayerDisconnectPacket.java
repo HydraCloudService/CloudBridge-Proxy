@@ -2,8 +2,10 @@ package de.hydracloud.cloudbridge.network.packet.impl.normal;
 
 import de.hydracloud.cloudbridge.network.packet.CloudPacket;
 import de.hydracloud.cloudbridge.network.packet.data.PacketData;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Getter
 @NoArgsConstructor
 public class PlayerDisconnectPacket extends CloudPacket {
 
@@ -28,7 +30,4 @@ public class PlayerDisconnectPacket extends CloudPacket {
     @Override
     public void handle() {}
 
-    public String getPlayerName() {
-        return playerName;
-    }
 }

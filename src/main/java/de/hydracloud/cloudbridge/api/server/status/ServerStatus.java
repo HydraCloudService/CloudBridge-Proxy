@@ -1,5 +1,8 @@
 package de.hydracloud.cloudbridge.api.server.status;
 
+import lombok.Getter;
+
+@Getter
 public enum ServerStatus {
 
     STARTING("STARTING", "§2STARTING"),
@@ -25,11 +28,4 @@ public enum ServerStatus {
         this.display = display;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getDisplay() {
-        return display;
-    }
 }

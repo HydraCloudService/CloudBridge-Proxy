@@ -2,8 +2,10 @@ package de.hydracloud.cloudbridge.network.packet.impl.response;
 
 import de.hydracloud.cloudbridge.network.packet.ResponsePacket;
 import de.hydracloud.cloudbridge.network.packet.data.PacketData;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Getter
 @NoArgsConstructor
 public class CheckPlayerNotifyResponsePacket extends ResponsePacket {
 
@@ -28,7 +30,4 @@ public class CheckPlayerNotifyResponsePacket extends ResponsePacket {
     @Override
     public void handle() {}
 
-    public boolean isValue() {
-        return value;
-    }
 }

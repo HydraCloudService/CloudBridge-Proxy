@@ -14,13 +14,16 @@ import de.hydracloud.cloudbridge.util.GeneralSettings;
 import de.hydracloud.cloudbridge.util.Utils;
 import dev.waterdog.waterdogpe.ProxyServer;
 import dev.waterdog.waterdogpe.logger.MainLogger;
+import lombok.Getter;
 
 import java.io.IOException;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
 
+@Getter
 public class Network implements Runnable {
 
+    @Getter
     private static Network instance;
 
     private final PacketPool packetPool;
@@ -150,27 +153,4 @@ public class Network implements Runnable {
         }
     }
 
-    public static Network getInstance() {
-        return instance;
-    }
-
-    public PacketPool getPacketPool() {
-        return packetPool;
-    }
-
-    public RequestManager getRequestManager() {
-        return requestManager;
-    }
-
-    public InetSocketAddress getAddress() {
-        return address;
-    }
-
-    public DatagramSocket getSocket() {
-        return socket;
-    }
-
-    public boolean isConnected() {
-        return connected;
-    }
 }

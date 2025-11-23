@@ -1,8 +1,10 @@
 package de.hydracloud.cloudbridge.network.packet;
 
 import de.hydracloud.cloudbridge.network.packet.data.PacketData;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Getter
 @NoArgsConstructor
 public abstract class ResponsePacket extends CloudPacket {
 
@@ -20,7 +22,4 @@ public abstract class ResponsePacket extends CloudPacket {
         requestId = packetData.readString();
     }
 
-    public String getRequestId() {
-        return requestId;
-    }
 }

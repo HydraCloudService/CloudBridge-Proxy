@@ -3,8 +3,10 @@ package de.hydracloud.cloudbridge.network.packet.impl.response;
 import de.hydracloud.cloudbridge.network.packet.ResponsePacket;
 import de.hydracloud.cloudbridge.network.packet.data.PacketData;
 import de.hydracloud.cloudbridge.network.packet.impl.types.VerifyStatus;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Getter
 @NoArgsConstructor
 public class ServerHandshakeResponsePacket extends ResponsePacket {
 
@@ -29,7 +31,4 @@ public class ServerHandshakeResponsePacket extends ResponsePacket {
     @Override
     public void handle() {}
 
-    public VerifyStatus getVerifyStatus() {
-        return verifyStatus;
-    }
 }

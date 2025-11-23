@@ -2,8 +2,10 @@ package de.hydracloud.cloudbridge.network.packet.impl.request;
 
 import de.hydracloud.cloudbridge.network.packet.RequestPacket;
 import de.hydracloud.cloudbridge.network.packet.data.PacketData;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Getter
 @NoArgsConstructor
 public class CloudServerStopRequestPacket extends RequestPacket {
 
@@ -25,7 +27,4 @@ public class CloudServerStopRequestPacket extends RequestPacket {
         server = packetData.readString();
     }
 
-    public String getServer() {
-        return server;
-    }
 }

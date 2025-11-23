@@ -5,8 +5,10 @@ import de.hydracloud.cloudbridge.api.player.CloudPlayer;
 import de.hydracloud.cloudbridge.api.registry.Registry;
 import de.hydracloud.cloudbridge.network.packet.CloudPacket;
 import de.hydracloud.cloudbridge.network.packet.data.PacketData;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Getter
 @NoArgsConstructor
 public class PlayerSyncPacket extends CloudPacket {
 
@@ -45,11 +47,4 @@ public class PlayerSyncPacket extends CloudPacket {
         }
     }
 
-    public CloudPlayer getPlayer() {
-        return player;
-    }
-
-    public boolean isRemoval() {
-        return removal;
-    }
 }

@@ -5,11 +5,13 @@ import de.hydracloud.cloudbridge.api.server.CloudServer;
 import de.hydracloud.cloudbridge.api.server.status.ServerStatus;
 import de.hydracloud.cloudbridge.api.template.Template;
 import de.hydracloud.cloudbridge.network.packet.impl.types.*;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.yaml.snakeyaml.Yaml;
 
 import java.util.*;
 
+@Getter
 @NoArgsConstructor
 public class PacketData {
 
@@ -225,7 +227,4 @@ public class PacketData {
         }
     }
 
-    public ArrayList<Object> getData() {
-        return data;
-    }
 }

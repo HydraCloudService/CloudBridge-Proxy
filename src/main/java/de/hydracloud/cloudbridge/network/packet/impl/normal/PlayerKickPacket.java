@@ -4,8 +4,10 @@ import de.hydracloud.cloudbridge.network.packet.CloudPacket;
 import de.hydracloud.cloudbridge.network.packet.data.PacketData;
 import dev.waterdog.waterdogpe.ProxyServer;
 import dev.waterdog.waterdogpe.player.ProxiedPlayer;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Getter
 @NoArgsConstructor
 public class PlayerKickPacket extends CloudPacket {
 
@@ -37,11 +39,4 @@ public class PlayerKickPacket extends CloudPacket {
         if ((player = ProxyServer.getInstance().getPlayer(this.player)) != null) player.disconnect(reason);
     }
 
-    public String getPlayer() {
-        return player;
-    }
-
-    public String getReason() {
-        return reason;
-    }
 }

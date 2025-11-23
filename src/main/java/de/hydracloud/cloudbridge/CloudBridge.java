@@ -18,6 +18,7 @@ import dev.waterdog.waterdogpe.event.defaults.PlayerLoginEvent;
 import dev.waterdog.waterdogpe.event.defaults.ServerTransferRequestEvent;
 import dev.waterdog.waterdogpe.player.ProxiedPlayer;
 import dev.waterdog.waterdogpe.plugin.Plugin;
+import lombok.Getter;
 
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
@@ -29,8 +30,11 @@ import java.util.concurrent.Executors;
 
 public class CloudBridge extends Plugin {
 
+    @Getter
     private static CloudBridge instance;
+    @Getter
     private final ExecutorService threadPool = Executors.newCachedThreadPool();
+    @Getter
     private Network network;
     public long lastKeepALiveCheck = 0;
 
@@ -68,17 +72,5 @@ public class CloudBridge extends Plugin {
         network.sendPacket(new DisconnectPacket(DisconnectReason.SERVER_SHUTDOWN));
         network.close();
         threadPool.shutdownNow();
-    }
-
-    public Network getNetwork() {
-        return network;
-    }
-
-    public static CloudBridge getInstance() {
-        return instance;
-    }
-
-    public ExecutorService getThreadPool() {
-        return threadPool;
     }
 }

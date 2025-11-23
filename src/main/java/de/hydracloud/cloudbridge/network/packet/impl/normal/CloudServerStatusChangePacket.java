@@ -3,8 +3,10 @@ package de.hydracloud.cloudbridge.network.packet.impl.normal;
 import de.hydracloud.cloudbridge.api.server.status.ServerStatus;
 import de.hydracloud.cloudbridge.network.packet.CloudPacket;
 import de.hydracloud.cloudbridge.network.packet.data.PacketData;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Getter
 @NoArgsConstructor
 public class CloudServerStatusChangePacket extends CloudPacket {
 
@@ -29,7 +31,4 @@ public class CloudServerStatusChangePacket extends CloudPacket {
     @Override
     public void handle() {}
 
-    public ServerStatus getNewStatus() {
-        return newStatus;
-    }
 }

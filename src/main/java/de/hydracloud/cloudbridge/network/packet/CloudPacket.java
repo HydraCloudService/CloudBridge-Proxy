@@ -1,8 +1,10 @@
 package de.hydracloud.cloudbridge.network.packet;
 
 import de.hydracloud.cloudbridge.network.packet.data.PacketData;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Getter
 @NoArgsConstructor
 public abstract class CloudPacket {
 
@@ -27,7 +29,4 @@ public abstract class CloudPacket {
 
     abstract public void handle();
 
-    public boolean isEncoded() {
-        return encoded;
-    }
 }

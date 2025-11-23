@@ -5,8 +5,10 @@ import de.hydracloud.cloudbridge.network.packet.data.PacketData;
 import de.hydracloud.cloudbridge.network.packet.impl.types.DisconnectReason;
 import dev.waterdog.waterdogpe.ProxyServer;
 import dev.waterdog.waterdogpe.logger.MainLogger;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Getter
 @NoArgsConstructor
 public class DisconnectPacket extends CloudPacket {
 
@@ -39,7 +41,4 @@ public class DisconnectPacket extends CloudPacket {
         }
     }
 
-    public DisconnectReason getDisconnectReason() {
-        return disconnectReason;
-    }
 }

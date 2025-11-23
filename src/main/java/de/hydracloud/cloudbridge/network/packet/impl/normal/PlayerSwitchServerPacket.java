@@ -2,8 +2,10 @@ package de.hydracloud.cloudbridge.network.packet.impl.normal;
 
 import de.hydracloud.cloudbridge.network.packet.CloudPacket;
 import de.hydracloud.cloudbridge.network.packet.data.PacketData;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Getter
 @NoArgsConstructor
 public class PlayerSwitchServerPacket extends CloudPacket {
 
@@ -32,11 +34,4 @@ public class PlayerSwitchServerPacket extends CloudPacket {
     @Override
     public void handle() {}
 
-    public String getPlayer() {
-        return player;
-    }
-
-    public String getNewServer() {
-        return newServer;
-    }
 }

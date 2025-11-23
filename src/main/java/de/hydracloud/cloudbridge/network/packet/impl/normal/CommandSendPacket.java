@@ -6,8 +6,10 @@ import de.hydracloud.cloudbridge.network.packet.impl.types.CommandExecutionResul
 import de.hydracloud.cloudbridge.network.packet.data.PacketData;
 import de.hydracloud.cloudbridge.util.CloudCommandSender;
 import dev.waterdog.waterdogpe.ProxyServer;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Getter
 @NoArgsConstructor
 public class CommandSendPacket extends CloudPacket {
 
@@ -38,7 +40,4 @@ public class CommandSendPacket extends CloudPacket {
         ));
     }
 
-    public String getCommandLine() {
-        return commandLine;
-    }
 }
