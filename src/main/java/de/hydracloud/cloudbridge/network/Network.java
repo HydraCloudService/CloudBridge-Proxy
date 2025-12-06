@@ -31,6 +31,8 @@ public class Network implements Runnable {
     private DatagramSocket socket;
     private boolean connected = false;
 
+    final byte[] byteBuffer = new byte[1024 * 1024 * 8];
+
     public Network(InetSocketAddress address) {
         instance = this;
         this.address = address;
@@ -103,8 +105,7 @@ public class Network implements Runnable {
 
     public String read() {
         if (!connected) return null;
-        byte[] buffer = new byte[1024 * 1024 * 8];
-        DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
+        DatagramPacket packet = new DatagramPacket(byteBuffer, byteBuffer.length);
         try {
             socket.receive(packet);
         } catch (IOException e) {
