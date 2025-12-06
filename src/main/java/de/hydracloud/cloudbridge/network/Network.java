@@ -110,6 +110,9 @@ public class Network implements Runnable {
             socket.receive(packet);
         } catch (IOException e) {
             ProxyServer.getInstance().getLogger().error("Failed to receive a packet", e);
+            if (e instanceof PortUnreachableException) {
+                ProxyServer.getInstance().shutdown();
+            }
             return null;
         }
         return new String(packet.getData(), 0, packet.getLength()).trim();
