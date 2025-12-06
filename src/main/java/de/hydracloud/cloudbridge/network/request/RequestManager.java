@@ -8,6 +8,7 @@ import dev.waterdog.waterdogpe.ProxyServer;
 import lombok.Getter;
 
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 
 @Getter
@@ -15,7 +16,7 @@ public class RequestManager {
 
     @Getter
     private static RequestManager instance;
-    private final HashMap<String, RequestPacket> requests = new HashMap<>();
+    private final ConcurrentHashMap<String, RequestPacket> requests = new ConcurrentHashMap<>();
 
     public RequestManager() {
         instance = this;
