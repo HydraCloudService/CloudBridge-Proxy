@@ -32,12 +32,15 @@ public class Network implements Runnable {
     private boolean connected = false;
 
     final byte[] byteBuffer = new byte[1024 * 1024 * 8];
+    private final DatagramPacket receivePacket;
 
     public Network(InetSocketAddress address) {
         instance = this;
+
+        this.receivePacket = new DatagramPacket(byteBuffer, byteBuffer.length);
         this.address = address;
         this.packetPool = new PacketPool();
-        requestManager = new RequestManager();
+        this.requestManager = new RequestManager();
 
         MainLogger.getLogger().info("Try to connect to §e" + address.toString() + "§r...");
         connect();
@@ -93,7 +96,9 @@ public class Network implements Runnable {
     }
 
     public boolean write(String buffer) {
-        DatagramPacket packet = new DatagramPacket(buffer.getBytes(StandardCharsets.UTF_8), buffer.getBytes(StandardCharsets.UTF_8).length, address);
+        byte[] data = buffer.getBytes(StandardCharsets.UTF_8);
+
+        DatagramPacket packet = new DatagramPacket(data, data.length, address);
         try {
             socket.send(packet);
             return true;
@@ -105,9 +110,9 @@ public class Network implements Runnable {
 
     public String read() {
         if (!connected) return null;
-        DatagramPacket packet = new DatagramPacket(byteBuffer, byteBuffer.length);
+
         try {
-            socket.receive(packet);
+            socket.receive(receivePacket);
         } catch (IOException e) {
             ProxyServer.getInstance().getLogger().error("Failed to receive a packet", e);
             if (e instanceof PortUnreachableException) {
@@ -115,7 +120,8 @@ public class Network implements Runnable {
             }
             return null;
         }
-        return new String(packet.getData(), 0, packet.getLength()).trim();
+
+        return new String(receivePacket.getData(), 0, receivePacket.getLength(), StandardCharsets.UTF_8).trim();
     }
 
     public void close() {
