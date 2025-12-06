@@ -116,6 +116,9 @@ public class Network implements Runnable {
         } catch (IOException e) {
             ProxyServer.getInstance().getLogger().error("Failed to receive a packet", e);
             if (e instanceof PortUnreachableException) {
+                this.close();
+                CloudBridge.getInstance().getThreadPool().shutdown();
+
                 ProxyServer.getInstance().shutdown();
             }
             return null;
